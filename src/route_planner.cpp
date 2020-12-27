@@ -112,9 +112,11 @@ void RoutePlanner::AStarSearch() {
 
     // TODO: Implement your solution here.
 	while(!open_list.empty()){
-      current_node = RouteModel::NextNode();
-      if(current_node == end_node)
-         m_Model.path = ConstructFinalPath(end_node);
+      current_node = NextNode();
+      if (current_node == end_node) {
+          m_Model.path = ConstructFinalPath(end_node);
+          break;
+      }
       else{
         AddNeighbors(current_node);
       }
